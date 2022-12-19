@@ -159,20 +159,23 @@ public class ArrayCompleteTree<E> implements CompleteTree<E> {
 		@Override
 		public Location parent() {
 			// TODO Auto-generated method stub
-			if (index == 1) {
-				return null;
-			}
+			if (index == 1) return null;
 			return new Location((index/2));
 		}
 
 		@Override
 		public Location child(boolean right) {
 			// TODO Auto-generated method stub
-			if (!right) {
-				return new Location(index*2);
+			
+			if (right && (index*2) + 1 <= manyItems) {
+				return new Location((index*2)+1);
+			}
+			else if (!right && index * 2 <= manyItems) {
+				return new Location(index * 2);
 			}
 			
-			return new Location((index*2)+1);
+			
+			return null;
 		}
 		
 	}
