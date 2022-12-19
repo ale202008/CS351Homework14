@@ -31,14 +31,13 @@ public class MinHeap<E> {
 	 * @return if a problem is found, in which case it has been reported
 	 */
 	private boolean checkSubtree(CompleteTree.Location<E> l, E bound) {
-		if (comparator.compare(l.left().get(), bound) > 0 || comparator.compare(l.right().get(), bound) > 0) {
-			return false;
-		}
-		if (l.left().get() == null && l.right().get() == null) {
-			return true;
-		}
+		if (l.left() != null && comparator.compare(l.left().get(), bound) > 0) return false;
+		if (l.right() != null && comparator.compare(l.right().get(), bound) > 0) return false;
 		
-		return checkSubtree(l.left(), l.left().get()) && checkSubtree(l.right(), l.right().get()); // TODO
+		if (l.left() != null) return checkSubtree(l.left(), l.left().get());
+		if (l.right() != null) return checkSubtree(l.left(), l.left().get());
+	
+		return true; // TODO
 	}
 	
 	private boolean wellFormed() {
@@ -54,8 +53,8 @@ public class MinHeap<E> {
 		if (comparator == null) return report("tree is null");
 		
 		//Invariant 3
-		if (!checkSubtree(tree.root(), tree.root().get())) return report("not within bounds");
-		
+		if (tree.root() != null && !checkSubtree(tree.root(), tree.root().get())) return report("not within bounds");
+
 		return true;
 	}
 	
