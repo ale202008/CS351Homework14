@@ -46,6 +46,16 @@ public class MinHeap<E> {
 		// and that the tree obeys the min-heap property.
 		// (No need to check that the tree is "complete";
 		// that's done by the CompleteTree implementation.)
+		
+		//Invariant 1
+		if (tree == null) return report("tree is null");
+		
+		//Invariant 2
+		if (comparator == null) return report("tree is null");
+		
+		//Invariant 3
+		if (!checkSubtree(tree.root(), tree.root().get())) return report("not within bounds");
+		
 		return true;
 	}
 	
