@@ -74,7 +74,7 @@ public class ArrayCompleteTree<E> implements CompleteTree<E> {
 		return manyItems;
 	}
 
-	@SuppressWarnings("unchecked")
+
 	@Override
 	public Location root() {
 		// TODO Auto-generated method stub
@@ -82,7 +82,7 @@ public class ArrayCompleteTree<E> implements CompleteTree<E> {
 		return null;
 	}
 
-	@SuppressWarnings("unchecked")
+
 	@Override
 	public Location last() {
 		// TODO Auto-generated method stub
@@ -90,11 +90,11 @@ public class ArrayCompleteTree<E> implements CompleteTree<E> {
 		return null;
 	}
 
-	@SuppressWarnings("unchecked")
+
 	@Override
 	public Location add(E value) {
 		// TODO Auto-generated method stub
-		ensureCapacity(manyItems);
+		ensureCapacity(manyItems+1);
 		data[manyItems] = value;
 		manyItems++;
 		return last();
@@ -103,6 +103,7 @@ public class ArrayCompleteTree<E> implements CompleteTree<E> {
 	@Override
 	public E remove() {
 		// TODO Auto-generated method stub
+		if (manyItems == 0) throw new NoSuchElementException();
 		E answer = data[manyItems-1];
 		data[manyItems-1] = null;
 		manyItems--;
