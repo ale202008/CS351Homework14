@@ -103,7 +103,7 @@ public class TreeCompleteTree<E> implements CompleteTree<E> {
 	@Override
 	public Location<E> add(E value) {
 		// TODO Auto-generated method stub
-		if (value == null) throw new NullPointerException();
+
 		
 		if (manyNodes == 0) {
 			root = new Node<E>(value);
@@ -151,18 +151,23 @@ public class TreeCompleteTree<E> implements CompleteTree<E> {
 		if (n <= 0 || n > manyNodes+1) throw new IllegalArgumentException("bad index " + n);
 		Node<E> lag = null;
 		Node<E> answer = root;
+		int nextPower = PowersOfTwo.next(n/2);
+		int positions = (int) ((Math.log(nextPower) / Math.log(2))) - 1;
 		
-		n = n/2;
-		while (n != 0) {
+		while (positions >= 0) {
 			lag = answer;
-			if (n - PowersOfTwo.next(n/2) == 0) {
-				answer = answer.left;
-			}
-			else {
-				answer = answer.right;
-			}
-			n = n/2;
+            if ((n & (1 << positions)) == 0) {
+                answer = answer.left;
+            }
+            else {
+                answer = answer.right;
+            }
+			positions--;
 		}
+		
+
+
+
 		
 		return new Pair<>(answer,lag); // TODO
 		// You will need to use PowersOfTwo to find the power
