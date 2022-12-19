@@ -6,6 +6,11 @@ import java.util.function.Consumer;
 import edu.uwm.cs.util.Pair;
 import edu.uwm.cs.util.PowersOfTwo;
 
+/**
+ * Andrew Le
+ * Homework 14 COMPSCI 351
+ */
+
 public class TreeCompleteTree<E> implements CompleteTree<E> {
 	private static class Node<T> implements Location<T> {
 		Node<T> parent, left, right;

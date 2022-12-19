@@ -4,6 +4,11 @@ import java.util.NoSuchElementException;
 import java.util.function.Consumer;
 
 /**
+ * Andrew Le
+ * Homework 14 COMPSCI 351
+ */
+
+/**
  * A dynamic-array implementation of the CompleteTree interface.
  */
 public class ArrayCompleteTree<E> implements CompleteTree<E> {
