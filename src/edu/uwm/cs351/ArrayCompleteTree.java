@@ -71,25 +71,37 @@ public class ArrayCompleteTree<E> implements CompleteTree<E> {
 	@Override
 	public int size() {
 		// TODO Auto-generated method stub
-		return 0;
+		return manyItems;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
-	public edu.uwm.cs351.CompleteTree.Location<E> root() {
+	public Location root() {
 		// TODO Auto-generated method stub
+		if (!isEmpty()) {
+			return new Location(1);
+		}
 		return null;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
-	public edu.uwm.cs351.CompleteTree.Location<E> last() {
+	public Location last() {
 		// TODO Auto-generated method stub
+		if (!isEmpty()) {
+			return new Location(manyItems);
+		}
 		return null;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
-	public edu.uwm.cs351.CompleteTree.Location<E> add(E value) {
+	public Location add(E value) {
 		// TODO Auto-generated method stub
-		return null;
+		ensureCapacity(manyItems);
+		data[manyItems] = value;
+		manyItems++;
+		return last();
 	}
 
 	@Override
@@ -134,13 +146,13 @@ public class ArrayCompleteTree<E> implements CompleteTree<E> {
 		@Override
 		public E get() {
 			// TODO Auto-generated method stub
-			return data[index];
+			return data[index-1];
 		}
 
 		@Override
 		public void set(E val) {
 			// TODO Auto-generated method stub
-			data[index] = val;
+			data[index-1] = val;
 			
 		}
 
@@ -148,9 +160,9 @@ public class ArrayCompleteTree<E> implements CompleteTree<E> {
 		public Location parent() {
 			// TODO Auto-generated method stub
 			if (index % 2 == 0) {
-				return new Location (index/2);
+				return new Location (index-1/2);
 			}
-			return new Location((index/2) - 1);
+			return new Location((index-1/2) - 1);
 		}
 
 		@Override
