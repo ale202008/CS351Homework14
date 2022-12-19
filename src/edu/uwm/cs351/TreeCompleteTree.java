@@ -80,6 +80,37 @@ public class TreeCompleteTree<E> implements CompleteTree<E> {
 		assert wellFormed(): "invariant broken by constructor";
 	}
 	
+	@Override
+	public int size() {
+		// TODO Auto-generated method stub
+		return manyNodes;
+	}
+
+	@Override
+	public Location<E> root() {
+		// TODO Auto-generated method stub
+		if (!isEmpty()) return root;
+		return null;
+	}
+
+	@Override
+	public Location<E> last() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Location<E> add(E value) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public E remove() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
 	/**
 	 * Locate a node in the tree using the algorithm
 	 * explained in Activity 14.  It will start with the root and then
@@ -118,33 +149,4 @@ public class TreeCompleteTree<E> implements CompleteTree<E> {
 		}
 	}
 
-	@Override
-	public int size() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public Location<E> root() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Location<E> last() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Location<E> add(E value) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public E remove() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }

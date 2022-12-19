@@ -68,14 +68,14 @@ public class ArrayCompleteTree<E> implements CompleteTree<E> {
 		assert wellFormed(): "invariant broken by constructor";
 	}
 	
-	@Override
+	@Override // required
 	public int size() {
 		// TODO Auto-generated method stub
 		return manyItems;
 	}
 
 
-	@Override
+	@Override //implementation
 	public Location root() {
 		// TODO Auto-generated method stub
 		if (!isEmpty()) return new Location(1);
@@ -83,7 +83,7 @@ public class ArrayCompleteTree<E> implements CompleteTree<E> {
 	}
 
 
-	@Override
+	@Override//implementation
 	public Location last() {
 		// TODO Auto-generated method stub
 		if (!isEmpty()) return new Location(manyItems);
@@ -91,7 +91,7 @@ public class ArrayCompleteTree<E> implements CompleteTree<E> {
 	}
 
 
-	@Override
+	@Override//implementation
 	public Location add(E value) {
 		// TODO Auto-generated method stub
 		ensureCapacity(manyItems+1);
@@ -100,7 +100,7 @@ public class ArrayCompleteTree<E> implements CompleteTree<E> {
 		return last();
 	}
 
-	@Override
+	@Override//implementation
 	public E remove() {
 		// TODO Auto-generated method stub
 		if (manyItems == 0) throw new NoSuchElementException();
@@ -144,27 +144,27 @@ public class ArrayCompleteTree<E> implements CompleteTree<E> {
 			return loc.index == index;
 		}
 
-		@Override
+		@Override //implementation
 		public E get() {
 			// TODO Auto-generated method stub
 			return data[index-1];
 		}
 
-		@Override
+		@Override //implementation
 		public void set(E val) {
 			// TODO Auto-generated method stub
 			data[index-1] = val;
 			
 		}
 
-		@Override
+		@Override //implementation
 		public Location parent() {
 			// TODO Auto-generated method stub
 			if (index == 1) return null;
 			return new Location((index/2));
 		}
 
-		@Override
+		@Override //implementation
 		public Location child(boolean right) {
 			// TODO Auto-generated method stub
 			
