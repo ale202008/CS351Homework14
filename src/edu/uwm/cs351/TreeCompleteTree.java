@@ -96,13 +96,31 @@ public class TreeCompleteTree<E> implements CompleteTree<E> {
 	@Override
 	public Location<E> last() {
 		// TODO Auto-generated method stub
+		if (!isEmpty()) return find(manyNodes).fst();
 		return null;
 	}
 
 	@Override
 	public Location<E> add(E value) {
 		// TODO Auto-generated method stub
-		return null;
+		if (value == null) throw new NullPointerException();
+		
+		if (manyNodes == 0) {
+			root = new Node<E>(value);
+			manyNodes++;
+		}
+		else {
+			Node<E> tempParent = find(manyNodes+1).snd();
+			if (tempParent.left == null) {
+				tempParent.left = new Node<E>(value);
+			}
+			else {
+				tempParent.right = new Node<E>(value);
+			}
+			manyNodes++;
+		}
+			
+		return last();
 	}
 
 	@Override
@@ -131,7 +149,30 @@ public class TreeCompleteTree<E> implements CompleteTree<E> {
 	 */
 	private Pair<Node<E>, Node<E>> find(int n) {
 		if (n <= 0 || n > manyNodes+1) throw new IllegalArgumentException("bad index " + n);
-		return new Pair<>(null,null); // TODO
+		Node<E> lag = null;
+		Node<E> answer = root;
+		
+		 if (n==2) {
+			 lag = answer;
+			 answer = answer.left;
+		 }
+		 else{
+			 n = n - PowersOfTwo.next(n/2);
+			 while (n != 0) {
+				 lag = answer;
+				 if (PowersOfTwo.contains(n)) {
+					 answer = answer.right;
+				 }
+				 else {
+					 answer = answer.left;
+				 }
+				 n = n/2;
+			 }
+		 }
+
+
+
+		return new Pair<>(answer,lag); // TODO
 		// You will need to use PowersOfTwo to find the power
 		// of two that represents the first bit in the number.
 		// This is the largest power of two which is *less*
