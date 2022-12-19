@@ -112,4 +112,34 @@ public class TreeCompleteTree<E> implements CompleteTree<E> {
 			return new Pair<>(pair.fst(), pair.snd());
 		}
 	}
+
+	@Override
+	public int size() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public Location<E> root() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Location<E> last() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Location<E> add(E value) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public E remove() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

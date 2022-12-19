@@ -95,6 +95,60 @@ public class ArrayCompleteTree<E> implements CompleteTree<E> {
 			ArrayCompleteTree<?>.Location loc = (ArrayCompleteTree<?>.Location)obj;
 			return loc.index == index;
 		}
+
+		@Override
+		public E get() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public void set(E val) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public edu.uwm.cs351.CompleteTree.Location<E> parent() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public edu.uwm.cs351.CompleteTree.Location<E> child(boolean right) {
+			// TODO Auto-generated method stub
+			return null;
+		}
 		
+	}
+
+	@Override
+	public int size() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public edu.uwm.cs351.CompleteTree.Location<E> root() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public edu.uwm.cs351.CompleteTree.Location<E> last() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public edu.uwm.cs351.CompleteTree.Location<E> add(E value) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public E remove() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
