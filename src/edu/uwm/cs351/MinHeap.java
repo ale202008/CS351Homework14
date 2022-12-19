@@ -31,7 +31,14 @@ public class MinHeap<E> {
 	 * @return if a problem is found, in which case it has been reported
 	 */
 	private boolean checkSubtree(CompleteTree.Location<E> l, E bound) {
-		return false; // TODO
+		if (comparator.compare(l.left().get(), bound) > 0 || comparator.compare(l.right().get(), bound) > 0) {
+			return false;
+		}
+		if (l.left().get() == null && l.right().get() == null) {
+			return true;
+		}
+		
+		return checkSubtree(l.left(), l.left().get()) && checkSubtree(l.right(), l.right().get()); // TODO
 	}
 	
 	private boolean wellFormed() {
@@ -67,7 +74,7 @@ public class MinHeap<E> {
 	 */
 	public int size() {
 		assert wellFormed() : "invariant broken in size";
-		return -1; // TODO (easy)
+		return tree.size(); // TODO (easy)
 	}
 	
 	/**
@@ -88,6 +95,7 @@ public class MinHeap<E> {
 	 */
 	public E min() {
 		assert wellFormed() : "invariant broken in min";
+		if (tree.isEmpty()) throw new NoSuchElementException();
 		return null; // TODO
 	}
 	
