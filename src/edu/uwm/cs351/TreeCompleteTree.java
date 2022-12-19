@@ -152,26 +152,18 @@ public class TreeCompleteTree<E> implements CompleteTree<E> {
 		Node<E> lag = null;
 		Node<E> answer = root;
 		
-		 if (n==2) {
-			 lag = answer;
-			 answer = answer.left;
-		 }
-		 else{
-			 n = n - PowersOfTwo.next(n/2);
-			 while (n != 0) {
-				 lag = answer;
-				 if (PowersOfTwo.contains(n)) {
-					 answer = answer.right;
-				 }
-				 else {
-					 answer = answer.left;
-				 }
-				 n = n/2;
-			 }
-		 }
-
-
-
+		n = n/2;
+		while (n != 0) {
+			lag = answer;
+			if (n - PowersOfTwo.next(n/2) == 0) {
+				answer = answer.left;
+			}
+			else {
+				answer = answer.right;
+			}
+			n = n/2;
+		}
+		
 		return new Pair<>(answer,lag); // TODO
 		// You will need to use PowersOfTwo to find the power
 		// of two that represents the first bit in the number.
