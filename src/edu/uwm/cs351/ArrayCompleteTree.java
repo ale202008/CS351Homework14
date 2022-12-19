@@ -94,9 +94,11 @@ public class ArrayCompleteTree<E> implements CompleteTree<E> {
 	@Override//implementation
 	public Location add(E value) {
 		// TODO Auto-generated method stub
+		assert wellFormed() : "Broken in end of remove";
 		ensureCapacity(manyItems+1);
 		data[manyItems] = value;
 		manyItems++;
+		assert wellFormed() : "Broken in end of remove";
 		return last();
 	}
 
@@ -107,6 +109,7 @@ public class ArrayCompleteTree<E> implements CompleteTree<E> {
 		E answer = data[manyItems-1];
 		data[manyItems-1] = null;
 		manyItems--;
+		assert wellFormed() : "Broken in end of remove";
 
 		return answer;
 	}
