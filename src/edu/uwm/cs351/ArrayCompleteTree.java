@@ -104,19 +104,27 @@ public class ArrayCompleteTree<E> implements CompleteTree<E> {
 		@Override
 		public E get() {
 			// TODO Auto-generated method stub
-			return null;
+			return data[index];
 		}
 
 		@Override
 		public void set(E val) {
 			// TODO Auto-generated method stub
+			data[index] = val;
 			
 		}
 
 		@Override
-		public edu.uwm.cs351.CompleteTree.Location<E> parent() {
+		public Location parent() {
 			// TODO Auto-generated method stub
-			return null;
+			Location temp = null;
+			if (index % 2 == 0) {
+				temp = new Location(index/2);
+			}
+			else {
+				temp = new Location((index/2)-1);
+			}
+			return temp;
 		}
 
 		@Override
