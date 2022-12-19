@@ -78,9 +78,7 @@ public class ArrayCompleteTree<E> implements CompleteTree<E> {
 	@Override
 	public Location root() {
 		// TODO Auto-generated method stub
-		if (!isEmpty()) {
-			return new Location(1);
-		}
+		if (!isEmpty()) return new Location(1);
 		return null;
 	}
 
@@ -88,9 +86,7 @@ public class ArrayCompleteTree<E> implements CompleteTree<E> {
 	@Override
 	public Location last() {
 		// TODO Auto-generated method stub
-		if (!isEmpty()) {
-			return new Location(manyItems);
-		}
+		if (!isEmpty()) return new Location(manyItems);
 		return null;
 	}
 
@@ -107,7 +103,11 @@ public class ArrayCompleteTree<E> implements CompleteTree<E> {
 	@Override
 	public E remove() {
 		// TODO Auto-generated method stub
-		return null;
+		E answer = data[manyItems-1];
+		data[manyItems-1] = null;
+		manyItems--;
+
+		return answer;
 	}
 	
 	// TODO
@@ -173,7 +173,6 @@ public class ArrayCompleteTree<E> implements CompleteTree<E> {
 			else if (!right && index * 2 <= manyItems) {
 				return new Location(index * 2);
 			}
-			
 			
 			return null;
 		}
