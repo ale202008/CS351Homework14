@@ -103,30 +103,54 @@ public class TreeCompleteTree<E> implements CompleteTree<E> {
 	@Override
 	public Location<E> add(E value) {
 		// TODO Auto-generated method stub
-
-		
+		assert wellFormed() : "Broken in start of add";
 		if (manyNodes == 0) {
 			root = new Node<E>(value);
 			manyNodes++;
 		}
 		else {
 			Node<E> tempParent = find(manyNodes+1).snd();
+			Node<E> newNode = new Node<E>(value);
+			newNode.parent = tempParent;
 			if (tempParent.left == null) {
-				tempParent.left = new Node<E>(value);
+				tempParent.left = newNode;
 			}
 			else {
-				tempParent.right = new Node<E>(value);
+				tempParent.right = newNode;
 			}
 			manyNodes++;
 		}
-			
+		assert wellFormed() : "Broken in end of add";
 		return last();
 	}
 
 	@Override
 	public E remove() {
 		// TODO Auto-generated method stub
-		return null;
+		if (isEmpty()) throw new NoSuchElementException();
+		E temp = null;
+
+		if (manyNodes == 1) {
+			temp = root.data;
+			root = null;
+			manyNodes--;
+
+		}
+		else {
+			Node<E> removeParent = find(manyNodes).snd();
+			Node<E> remove = find(manyNodes).fst();
+			if (removeParent.left == remove) {
+				removeParent.left = null;
+			}
+			else
+				removeParent.right = null;
+			remove.parent = null;
+			manyNodes--;
+			temp = remove.data;
+		}
+		
+		assert wellFormed() : "Broken in end of remove";
+		return temp;
 	}
 	
 	/**
