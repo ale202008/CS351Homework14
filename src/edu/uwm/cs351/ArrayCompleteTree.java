@@ -68,6 +68,36 @@ public class ArrayCompleteTree<E> implements CompleteTree<E> {
 		assert wellFormed(): "invariant broken by constructor";
 	}
 	
+	@Override
+	public int size() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public edu.uwm.cs351.CompleteTree.Location<E> root() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public edu.uwm.cs351.CompleteTree.Location<E> last() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public edu.uwm.cs351.CompleteTree.Location<E> add(E value) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public E remove() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
 	// TODO
 	// We don't use identity on locations; you can create a new Location
 	// whenever you need to return a location.
@@ -117,51 +147,22 @@ public class ArrayCompleteTree<E> implements CompleteTree<E> {
 		@Override
 		public Location parent() {
 			// TODO Auto-generated method stub
-			Location temp = null;
 			if (index % 2 == 0) {
-				temp = new Location(index/2);
+				return new Location (index/2);
 			}
-			else {
-				temp = new Location((index/2)-1);
-			}
-			return temp;
+			return new Location((index/2) - 1);
 		}
 
 		@Override
-		public edu.uwm.cs351.CompleteTree.Location<E> child(boolean right) {
+		public Location child(boolean right) {
 			// TODO Auto-generated method stub
-			return null;
+			if (!right) {
+				return new Location(index*2);
+			}
+			
+			return new Location((index*2)+1);
 		}
 		
 	}
 
-	@Override
-	public int size() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public edu.uwm.cs351.CompleteTree.Location<E> root() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public edu.uwm.cs351.CompleteTree.Location<E> last() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public edu.uwm.cs351.CompleteTree.Location<E> add(E value) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public E remove() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }
